@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code | Rehabilitation AI Partner</title>
+  <meta name="description" content="Code snippets for Rehabilitation AI Partner." />
+  <link rel="stylesheet" href="../../assets/styles/base.css" />
+  <link rel="stylesheet" href="../../assets/styles/components.css" />
+  <link rel="stylesheet" href="../../assets/styles/pages.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="../../index.html">Juan Ortega</a>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <a href="../../index.html">Home</a>
+        <a href="../../projects.html">Projects</a>
+        <a href="../../Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">Dark</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section-block">
+    <h1>Rehabilitation AI Partner: Code Snippets</h1>
+    <p class="lead">Illustrative snippet for policy selection conditioned on adherence risk.</p>
+
+    <section class="code-panel">
+<pre><code><span class="code-keyword">def</span> <span class="code-func">select_intervention</span>(state, policy, threshold=0.65):
+    risk_score = policy.predict_risk(state)
+    <span class="code-keyword">if</span> risk_score &gt; threshold:
+        <span class="code-keyword">return</span> <span class="code-string">"high_support_prompt"</span>
+    <span class="code-keyword">return</span> <span class="code-string">"light_reminder"</span>
+
+<span class="code-keyword">def</span> <span class="code-func">update_episode</span>(agent, transition):
+    agent.buffer.append(transition)
+    <span class="code-keyword">if</span> len(agent.buffer) &gt;= agent.batch_size:
+        loss = agent.learn()
+        <span class="code-keyword">return</span> {<span class="code-string">"loss"</span>: round(loss, 4)}
+    <span class="code-keyword">return</span> {<span class="code-string">"loss"</span>: <span class="code-keyword">None</span>}</code></pre>
+    </section>
+
+    <div class="button-row">
+      <a class="button button-primary" href="index.html">Back to Description</a>
+      <a class="button" href="../../projects.html">All Projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Juan Ortega</span>
+    </div>
+  </footer>
+
+  <script src="../../assets/scripts/theme.js"></script>
+</body>
+</html>

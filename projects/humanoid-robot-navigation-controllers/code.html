@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code | Humanoid Robot Navigation Controllers</title>
+  <meta name="description" content="Code snippets for Humanoid Robot Navigation Controllers." />
+  <link rel="stylesheet" href="../../assets/styles/base.css" />
+  <link rel="stylesheet" href="../../assets/styles/components.css" />
+  <link rel="stylesheet" href="../../assets/styles/pages.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="../../index.html">Juan Ortega</a>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <a href="../../index.html">Home</a>
+        <a href="../../projects.html">Projects</a>
+        <a href="../../Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">Dark</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section-block">
+    <h1>Humanoid Robot Navigation: Code Snippets</h1>
+    <p class="lead">Illustrative snippet for trajectory tracking with a PID loop.</p>
+
+    <section class="code-panel">
+<pre><code><span class="code-keyword">class</span> <span class="code-func">PIDController</span>:
+    <span class="code-keyword">def</span> <span class="code-func">__init__</span>(self, kp, ki, kd):
+        self.kp, self.ki, self.kd = kp, ki, kd
+        self.integral = 0.0
+        self.prev_error = 0.0
+
+    <span class="code-keyword">def</span> <span class="code-func">step</span>(self, error, dt):
+        self.integral += error * dt
+        derivative = (error - self.prev_error) / max(dt, 1e-6)
+        self.prev_error = error
+        <span class="code-keyword">return</span> self.kp * error + self.ki * self.integral + self.kd * derivative
+
+<span class="code-keyword">def</span> <span class="code-func">track_point</span>(target, pose, pid, dt):
+    error = target - pose
+    control = pid.step(error, dt)
+    <span class="code-keyword">return</span> pose + control * dt</code></pre>
+    </section>
+
+    <div class="button-row">
+      <a class="button button-primary" href="index.html">Back to Description</a>
+      <a class="button" href="../../projects.html">All Projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Juan Ortega</span>
+    </div>
+  </footer>
+
+  <script src="../../assets/scripts/theme.js"></script>
+</body>
+</html>

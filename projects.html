@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Juan Ortega</title>
+  <meta name="description" content="AI and ML projects by Juan Ortega." />
+  <link rel="stylesheet" href="assets/styles/base.css" />
+  <link rel="stylesheet" href="assets/styles/components.css" />
+  <link rel="stylesheet" href="assets/styles/pages.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="index.html">Juan Ortega</a>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">Dark</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section-block">
+    <h1>Projects</h1>
+    <p class="lead">Three focused projects from my resume, each with a short summary page and code walkthrough.</p>
+
+    <div class="card-grid">
+      <article class="card">
+        <h2>Rehabilitation AI Partner (Research)</h2>
+        <p>Architecting an RL-driven rehab partner integrating EMA for state monitoring and JITAI for personalized behavioral feedback.</p>
+        <div class="button-row">
+          <a class="button button-primary" href="projects/rehabilitation-ai-partner/index.html">Description</a>
+          <a class="button" href="projects/rehabilitation-ai-partner/code.html">Code</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Movie Recommendation System (ML in Production)</h2>
+        <p>Real-time ingestion via Kafka, Docker-based deployment, and matrix factorization with metadata enrichment.</p>
+        <div class="button-row">
+          <a class="button button-primary" href="projects/movie-recommendation-system/index.html">Description</a>
+          <a class="button" href="projects/movie-recommendation-system/code.html">Code</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Humanoid Robot Navigation Controllers (Undergrad Thesis)</h2>
+        <p>Designed and simulated PID and Lyapunov-based controllers on RRT-generated paths; benchmarked stability and tracking precision.</p>
+        <div class="button-row">
+          <a class="button button-primary" href="projects/humanoid-robot-navigation-controllers/index.html">Description</a>
+          <a class="button" href="projects/humanoid-robot-navigation-controllers/code.html">Code</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Juan Ortega</span>
+    </div>
+  </footer>
+
+  <script src="assets/scripts/theme.js"></script>
+</body>
+</html>

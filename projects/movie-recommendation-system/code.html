@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code | Movie Recommendation System</title>
+  <meta name="description" content="Code snippets for Movie Recommendation System." />
+  <link rel="stylesheet" href="../../assets/styles/base.css" />
+  <link rel="stylesheet" href="../../assets/styles/components.css" />
+  <link rel="stylesheet" href="../../assets/styles/pages.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="../../index.html">Juan Ortega</a>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <a href="../../index.html">Home</a>
+        <a href="../../projects.html">Projects</a>
+        <a href="../../Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">Dark</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section-block">
+    <h1>Movie Recommendation System: Code Snippets</h1>
+    <p class="lead">Illustrative snippet for user-item factor scoring.</p>
+
+    <section class="code-panel">
+<pre><code><span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np
+
+<span class="code-keyword">def</span> <span class="code-func">predict_score</span>(user_vec, item_vec, user_bias=0.0, item_bias=0.0, global_bias=3.2):
+    dot = np.dot(user_vec, item_vec)
+    <span class="code-keyword">return</span> global_bias + user_bias + item_bias + dot
+
+<span class="code-keyword">def</span> <span class="code-func">top_n_recommendations</span>(user_id, user_matrix, item_matrix, n=10):
+    scores = []
+    <span class="code-keyword">for</span> item_id, item_vec <span class="code-keyword">in</span> enumerate(item_matrix):
+        score = predict_score(user_matrix[user_id], item_vec)
+        scores.append((item_id, score))
+    scores.sort(key=<span class="code-keyword">lambda</span> x: x[1], reverse=<span class="code-keyword">True</span>)
+    <span class="code-keyword">return</span> scores[:n]</code></pre>
+    </section>
+
+    <div class="button-row">
+      <a class="button button-primary" href="index.html">Back to Description</a>
+      <a class="button" href="../../projects.html">All Projects</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© <span id="year"></span> Juan Ortega</span>
+    </div>
+  </footer>
+
+  <script src="../../assets/scripts/theme.js"></script>
+</body>
+</html>

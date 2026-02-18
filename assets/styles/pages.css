@@ -1,0 +1,38 @@
+.code-panel pre {
+  margin: 0;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: color-mix(in srgb, var(--text) 90%, #8fb4f7);
+  background: var(--surface-muted);
+  padding: 1rem;
+  border-radius: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+.code-keyword {
+  color: #c63d64;
+  font-weight: 700;
+}
+
+.code-func {
+  color: #2d76c5;
+}
+
+.code-string {
+  color: #2e8e59;
+}
+
+[data-theme="dark"] .code-keyword {
+  color: #f08aa3;
+}
+
+[data-theme="dark"] .code-func {
+  color: #86b8f2;
+}
+
+[data-theme="dark"] .code-string {
+  color: #82d9a5;
+}
