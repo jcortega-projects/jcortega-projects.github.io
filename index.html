@@ -1,72 +1,287 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Juan Ortega — AI Engineer</title>
-<style>
-  body { font-family: Arial, sans-serif; margin:0; padding:0; color:#222; }
-  header { background:#111; color:#fff; padding:60px 20px; text-align:center; }
-  header h1 { margin:0; font-size:2.8em; }
-  header p { margin:5px 0 20px; font-size:1.2em; }
-  section { padding:40px 20px; max-width:900px; margin:auto; }
-  .project { margin-bottom:30px; }
-  .project h3 { margin:0; }
-  .links a { margin-right:15px; color:#0066cc; text-decoration:none; }
-  .links a:hover { text-decoration:underline; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Juan Carlos Ortega Quezada — AI Engineer</title>
+  <meta name="description" content="Juan Ortega — AI Engineer | MSAII @ CMU. Deep Learning, Advance NLP, ML in Production, Robotics/HRI." />
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --card:#111827;
+      --text:#e5e7eb;
+      --muted:#a7b0bf;
+      --accent:#60a5fa;
+      --border: rgba(255,255,255,.08);
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+      --radius: 16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% 10%, rgba(96,165,250,.18), transparent 60%),
+                  radial-gradient(900px 700px at 90% 30%, rgba(34,197,94,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:28px 18px 60px}
+    .nav{
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      padding:10px 0 22px;
+    }
+    .nav .left{display:flex; gap:12px; align-items:center}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border:1px solid var(--border);
+      border-radius:999px; background:rgba(255,255,255,.03);
+      color:var(--muted); font-size:13px;
+    }
+    .pillrow{display:flex; gap:10px; flex-wrap:wrap}
+    .hero{
+      display:grid; grid-template-columns: 1.3fr .7fr; gap:18px; align-items:stretch;
+      margin-bottom:18px;
+    }
+    @media (max-width: 860px){ .hero{grid-template-columns:1fr} }
+    .card{
+      background: rgba(17,24,39,.75);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      backdrop-filter: blur(10px);
+    }
+    h1{font-size:44px; margin:6px 0 8px; letter-spacing:-.02em}
+    .subtitle{color:var(--muted); font-size:16px; margin:0 0 14px}
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:600;
+    }
+    .btn.primary{
+      background: rgba(96,165,250,.18);
+      border-color: rgba(96,165,250,.35);
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width: 860px){ .grid2{grid-template-columns:1fr} }
+    h2{margin:0 0 10px; font-size:18px; letter-spacing:.01em}
+    .muted{color:var(--muted)}
+    .kvs{display:grid; gap:8px}
+    .kv{display:flex; justify-content:space-between; gap:10px; border-top:1px solid var(--border); padding-top:10px}
+    .kv:first-child{border-top:none; padding-top:0}
+    .tags{display:flex; gap:8px; flex-wrap:wrap}
+    .tag{
+      font-size:12px; color:var(--muted);
+      padding:6px 10px; border-radius:999px;
+      border:1px solid var(--border); background:rgba(255,255,255,.03);
+    }
+    .section{margin-top:14px}
+    .item{border-top:1px solid var(--border); padding-top:12px; margin-top:12px}
+    .item:first-child{border-top:none; padding-top:0; margin-top:0}
+    .item h3{margin:0; font-size:16px}
+    .item .meta{color:var(--muted); font-size:13px; margin-top:2px}
+    .item ul{margin:8px 0 0 18px}
+    .footer{margin-top:22px; text-align:center; color:var(--muted); font-size:13px}
+    .small{font-size:13px}
+    .topline{display:flex; align-items:flex-start; justify-content:space-between; gap:10px}
+  </style>
 </head>
+
 <body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="left">
+        <span class="badge">AI Engineer</span>
+        <span class="badge">MSAI @ CMU</span>
+      </div>
+      <div class="pillrow">
+        <a class="badge" href="#projects">Projects</a>
+        <a class="badge" href="#experience">Experience</a>
+        <a class="badge" href="#skills">Skills</a>
+        <a class="badge" href="#contact">Contact</a>
+      </div>
+    </div>
 
-<header>
-  <h1>Juan Ortega</h1>
-  <p>AI Engineer | MSAI @ CMU | Machine Learning & Data Science</p>
-</header>
+    <div class="hero">
+      <div class="card">
+        <h1>Juan Ortega</h1>
+        <p class="subtitle">MS in Artificial Intelligence & Innovation (CMU) · Deep Learning · NLP · ML in Production · Robotics/HRI</p>
 
-<section>
-  <h2>About Me</h2>
-  <p>I’m an AI engineer driven by solving real-world problems with machine learning and scalable systems. I build models, deploy applications, and explore modern AI research.</p>
-</section>
+        <div class="tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">Transformers</span>
+          <span class="tag">RAG</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Kafka</span>
+        </div>
 
-<section>
-  <h2>Projects</h2>
+        <div class="cta">
+          <a class="btn primary" href="mailto:jcortega@andrew.cmu.edu">Email</a>
+          <a class="btn" href="https://linkedin.com/in/juan-ortega-quezada" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="https://github.com/jcortega-projects" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
 
-  <div class="project">
-    <h3>🧠 Project One — Name</h3>
-    <p>Brief description of what you did (model built, dataset used, impact).</p>
-    <p class="links">
-      <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
-      <a href="#">Live Demo</a>
-    </p>
+        <p class="muted small" style="margin-top:14px;">
+          I build end-to-end ML systems: from data → model → evaluation → deployment. I’m especially interested in applied LLMs, robust pipelines, and human-centered AI.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Quick Info</h2>
+        <div class="kvs">
+          <div class="kv"><span class="muted">Location</span><span>Pittsburgh, PA</span></div>
+          <div class="kv"><span class="muted">Program</span><span>MSAI @ CMU (2025–2027)</span></div>
+          <div class="kv"><span class="muted">Focus</span><span>DL · NLP · Production ML</span></div>
+          <div class="kv"><span class="muted">Award</span><span>Fulbright Scholar</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card section" id="projects">
+        <h2>Selected Projects</h2>
+
+        <div class="item">
+          <div class="topline">
+            <h3>Rehabilitation AI Partner (Research)</h3>
+            <div class="meta">Advisor: Prof. Henny Admoni</div>
+          </div>
+          <ul>
+            <li>Architecting an RL-driven “Rehab Partner” integrating EMA for state monitoring and JITAI for personalized behavioral feedback.</li>
+            <li>Goal: optimize exercise consistency and long-term physical therapy adherence.</li>
+          </ul>
+          <div class="tags" style="margin-top:10px;">
+            <span class="tag">RL</span><span class="tag">HRI</span><span class="tag">EMA</span><span class="tag">JITAI</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="topline">
+            <h3>Movie Recommendation System (ML in Production)</h3>
+            <div class="meta">End-to-end pipeline</div>
+          </div>
+          <ul>
+            <li>Real-time ingestion via Kafka; containerized deployment with Docker.</li>
+            <li>Recommendation engine using Matrix Factorization; automated scraping for metadata enrichment and tracking.</li>
+          </ul>
+          <div class="tags" style="margin-top:10px;">
+            <span class="tag">Kafka</span><span class="tag">Docker</span><span class="tag">Matrix Factorization</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="topline">
+            <h3>Humanoid Robot Navigation Controllers (Undergrad Thesis)</h3>
+            <div class="meta">PID vs. Lyapunov-based control</div>
+          </div>
+          <ul>
+            <li>Designed and simulated controllers for humanoid navigation on RRT-generated paths.</li>
+            <li>Benchmarked stability, precision, and tracking efficiency.</li>
+          </ul>
+          <div class="tags" style="margin-top:10px;">
+            <span class="tag">Control</span><span class="tag">Robotics</span><span class="tag">Simulation</span>
+          </div>
+        </div>
+
+        <p class="muted small" style="margin-top:14px;">
+          Tip: replace any project above with your strongest GitHub repos + add links once ready.
+        </p>
+      </div>
+
+      <div class="card section" id="experience">
+        <h2>Experience</h2>
+
+        <div class="item">
+          <h3>Mentor IA — Founder & Lead AI Engineer</h3>
+          <div class="meta">Dec 2023 – May 2025 · Quito, Ecuador</div>
+          <ul>
+            <li>Built a full-stack AI platform with FastAPI + React; Dockerized and hosted on Azure.</li>
+            <li>Engineered multi-agent RAG (Unstructured ingestion + Pinecone) integrating Gemini and OpenAI.</li>
+            <li>Designed data/logging strategy using CosmosDB + MySQL and custom telemetry.</li>
+          </ul>
+          <div class="tags" style="margin-top:10px;">
+            <span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Azure</span><span class="tag">Pinecone</span><span class="tag">RAG</span>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>ALLIENT — AI/ML Developer Intern</h3>
+          <div class="meta">Sep 2023 – Dec 2023 · Quito, Ecuador</div>
+          <ul>
+            <li>Integrated LLM-based scoring into production for automated candidate ranking and rationale extraction.</li>
+            <li>Built a “Top-N” selection algorithm to reduce manual screening time.</li>
+            <li>Established pre-deployment testing protocols for reliability.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <h3>Nipro Medical Corporation — Technical Coordinator</h3>
+          <div class="meta">Apr 2022 – Sep 2023 · Quito, Ecuador</div>
+          <ul>
+            <li>Managed deployment and QA of 250+ medical devices across national healthcare networks.</li>
+            <li>Led technical training sessions for healthcare staff.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card section" id="skills">
+      <h2>Skills</h2>
+      <div class="grid2">
+        <div>
+          <p class="muted" style="margin:0 0 8px;">Languages</p>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">C++</span><span class="tag">Java</span><span class="tag">JavaScript (React)</span>
+          </div>
+        </div>
+        <div>
+          <p class="muted" style="margin:0 0 8px;">ML / Data</p>
+          <div class="tags">
+            <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">scikit-learn</span><span class="tag">Transformers</span><span class="tag">LLMs</span><span class="tag">RAG</span>
+          </div>
+        </div>
+        <div>
+          <p class="muted" style="margin:0 0 8px;">Backend / Cloud</p>
+          <div class="tags">
+            <span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Kafka</span><span class="tag">Azure (CosmosDB)</span>
+          </div>
+        </div>
+        <div>
+          <p class="muted" style="margin:0 0 8px;">Tools</p>
+          <div class="tags">
+            <span class="tag">Git</span><span class="tag">CI/CD</span><span class="tag">W&B</span><span class="tag">Pinecone</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card section" id="contact">
+      <h2>Contact</h2>
+      <p class="muted" style="margin-top:0;">Best way to reach me is email. Links below:</p>
+      <div class="pillrow">
+        <a class="btn primary" href="mailto:jcortega@andrew.cmu.edu">jcortega@andrew.cmu.edu</a>
+        <a class="btn" href="https://linkedin.com/in/juan-ortega-quezada" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/jcortega-projects" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      © <span id="y"></span> Juan Ortega · Built on GitHub Pages · <a href="https://juanortega.dev">juanortega.dev</a>
+    </div>
   </div>
 
-  <div class="project">
-    <h3>📊 Project Two — Name</h3>
-    <p>Describe the challenge, your approach, and results.</p>
-    <p class="links">
-      <a href="https://github.com/yourusername/project2" target="_blank">GitHub</a>
-      <a href="#">Paper/Report</a>
-    </p>
-  </div>
-
-</section>
-
-<section>
-  <h2>Skills</h2>
-  <ul>
-    <li>Python, NumPy, Pandas</li>
-    <li>PyTorch, TensorFlow</li>
-    <li>Machine Learning & Deep Learning</li>
-    <li>Docker, AWS, Git</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:juan@example.com">juan@example.com</a></p>
-  <p>GitHub: <a href="https://github.com/jcortega-projects">jcortega-projects</a></p>
-  <p>LinkedIn: <a href="#">linkedin.com/in/juanortega</a></p>
-</section>
-
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
