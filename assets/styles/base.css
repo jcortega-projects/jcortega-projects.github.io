@@ -13,6 +13,10 @@
   --accent-strong: #114782;
   --success: #1f7a5b;
   --shadow: 0 10px 30px rgba(31, 58, 94, 0.08);
+  --nav-icon-button-size: 42px;
+  --nav-icon-size: 20px;
+  --project-thumb-height: 160px;
+  --project-hero-max-height: 400px;
 }
 
 [data-theme="dark"] {
