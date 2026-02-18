@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rehabilitation AI Partner | Juan Ortega</title>
-  <meta name="description" content="Project overview: Rehabilitation AI Partner." />
+  <title>Code | Mentor IA</title>
+  <meta name="description" content="Code snippets for Mentor IA." />
   <link rel="stylesheet" href="../../assets/styles/base.css" />
   <link rel="stylesheet" href="../../assets/styles/components.css" />
   <link rel="stylesheet" href="../../assets/styles/pages.css" />
@@ -33,31 +33,36 @@
   </header>
 
   <main class="container section-block">
-    <h1>Rehabilitation AI Partner</h1>
-    <p class="lead">A human-centered RL research project for improving physical therapy adherence with personalized interventions.</p>
+    <h1>Mentor IA: Code Snippets</h1>
+    <p class="lead">Illustrative backend snippet for recommendation-driven mentor response planning.</p>
 
-    <figure class="project-hero">
-      <img src="../../assets/images/projects/rehab-ai-partner/project_overview.png" alt="Rehabilitation AI Partner overview" />
-    </figure>
+    <section class="code-panel">
+<pre><code><span class="code-keyword">from</span> fastapi <span class="code-keyword">import</span> APIRouter
+<span class="code-keyword">from</span> pydantic <span class="code-keyword">import</span> BaseModel
 
-    <section class="panel spaced">
-      <h2>Project Summary</h2>
-      <p>Architecting an RL-driven "Rehab Partner" integrating Ecological Momentary Assessment (EMA) for state monitoring and Just-In-Time Adaptive Interventions (JITAI) for personalized behavioral feedback.</p>
-      <p>Primary objective: optimize exercise consistency and long-term physical therapy adherence.</p>
-    </section>
+router = APIRouter()
 
-    <section class="panel spaced">
-      <h2>Core Components</h2>
-      <ul class="compact-list">
-        <li>Behavior state estimation from EMA signals</li>
-        <li>Policy learning for intervention timing and type</li>
-        <li>Feedback personalization loop with adherence metrics</li>
-      </ul>
+<span class="code-keyword">class</span> <span class="code-func">MentorRequest</span>(BaseModel):
+    learner_goal: str
+    recent_activity: list[str]
+
+<span class="code-keyword">def</span> <span class="code-func">build_prompt</span>(payload: MentorRequest) -&gt; str:
+    history = ", ".join(payload.recent_activity[-3:])
+    <span class="code-keyword">return</span> (
+        <span class="code-string">f"Goal: {payload.learner_goal}\n"</span>
+        <span class="code-string">f"Recent activity: {history}\n"</span>
+        <span class="code-string">"Return a concise next-step mentoring plan."</span>
+    )
+
+<span class="code-keyword">@router</span>.post(<span class="code-string">"/mentor/next-step"</span>)
+<span class="code-keyword">def</span> <span class="code-func">next_step</span>(payload: MentorRequest):
+    prompt = build_prompt(payload)
+    <span class="code-keyword">return</span> {"prompt": prompt, "status": "ready"}</code></pre>
     </section>
 
     <div class="button-row">
-      <a class="button button-primary" href="code.html">View Code Page</a>
-      <a class="button" href="../../projects.html">Back to Projects</a>
+      <a class="button button-primary" href="index.html">Back to Description</a>
+      <a class="button" href="../../projects.html">All Projects</a>
     </div>
   </main>
 
