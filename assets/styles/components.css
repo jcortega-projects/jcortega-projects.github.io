@@ -16,9 +16,41 @@
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
   font-weight: 800;
   color: var(--text);
   letter-spacing: -0.01em;
+}
+
+.brand-logo-wrap {
+  display: none;
+}
+
+.brand-logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 0;
+}
+
+.logo-dark {
+  display: none;
+}
+
+[data-theme="dark"] .logo-light {
+  display: none;
+}
+
+[data-theme="dark"] .logo-dark {
+  display: block;
+}
+
+.brand-text {
+  font-size: 0.98rem;
 }
 
 .site-nav {
@@ -26,6 +58,18 @@
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
+}
+
+.top-right-logo {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  border-radius: 0.45rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  background: var(--surface);
+  flex-shrink: 0;
 }
 
 .site-nav a,
@@ -44,6 +88,29 @@
   border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
 }
 
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+}
+
+.icon-link img {
+  width: 1.1rem;
+  height: 1.1rem;
+  object-fit: contain;
+}
+
+.theme-toggle img {
+  width: 1.1rem;
+  height: 1.1rem;
+  object-fit: contain;
+  display: block;
+}
+
+
 .theme-toggle {
   cursor: pointer;
   transition: transform 120ms ease;
@@ -60,6 +127,41 @@
   display: grid;
   grid-template-columns: 1.4fr 0.9fr;
   gap: 1.2rem;
+}
+
+.hero-side {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.profile-photo {
+  width: min(16rem, 58vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid color-mix(in srgb, var(--border) 70%, transparent);
+  box-shadow: 0 12px 26px rgba(25, 45, 75, 0.18);
+}
+
+.profile-name {
+  margin-top: 0.8rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .eyebrow {
@@ -153,10 +255,31 @@
   flex-wrap: wrap;
 }
 
+.footer-github {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-github img {
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
+}
+
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
     padding-top: 3rem;
+  }
+
+  .hero-side {
+    justify-items: start;
+  }
+
+  .profile-card {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .card-grid {
@@ -165,6 +288,18 @@
 }
 
 @media (max-width: 640px) {
+  .nav-row {
+    align-items: flex-start;
+  }
+
+  .brand-text {
+    font-size: 0.9rem;
+  }
+
+  .profile-photo {
+    width: min(12rem, 62vw);
+  }
+
   .card-grid {
     grid-template-columns: 1fr;
   }

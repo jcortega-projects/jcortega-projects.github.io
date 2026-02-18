@@ -14,8 +14,27 @@
 
   function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
+    var githubIcons = document.querySelectorAll(".github-icon");
+    githubIcons.forEach(function (icon) {
+      var lightIcon = icon.getAttribute("data-light-icon") || "github_logo_dark.png";
+      var darkIcon = icon.getAttribute("data-dark-icon") || "github_logo_white.png";
+      icon.src = theme === "dark" ? darkIcon : lightIcon;
+    });
+
     if (button) {
-      button.textContent = theme === "dark" ? "Light" : "Dark";
+      var icon = button.querySelector("img");
+      if (!icon) {
+        icon = document.createElement("img");
+        icon.setAttribute("data-dark-icon", button.getAttribute("data-dark-icon") || "night-mode.png");
+        icon.setAttribute("data-light-icon", button.getAttribute("data-light-icon") || "day-mode.png");
+        button.textContent = "";
+        button.appendChild(icon);
+      }
+      var darkIcon = icon.getAttribute("data-dark-icon") || "night-mode.png";
+      var lightIcon = icon.getAttribute("data-light-icon") || "day-mode.png";
+      var nextIsDark = theme !== "dark";
+      icon.src = nextIsDark ? darkIcon : lightIcon;
+      icon.alt = nextIsDark ? "Dark mode" : "Light mode";
     }
   }
 
