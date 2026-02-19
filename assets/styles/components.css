@@ -598,6 +598,93 @@
   border-radius: 0.65rem;
 }
 
+/* Rehabilitation AI Partner case study layout */
+.rehab-case-study {
+  display: grid;
+  gap: 1rem;
+}
+
+.rehab-case-study-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.85fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.rehab-case-study-hero__content {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.rehab-case-study-hero__media {
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  background: color-mix(in srgb, var(--surface-muted) 70%, var(--surface));
+  border-radius: 0.95rem;
+  padding: 0.55rem;
+  box-shadow: var(--shadow);
+}
+
+.rehab-case-study-hero__media img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 0.65rem;
+}
+
+.rehab-case-study-diagram {
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  background: var(--surface);
+  border-radius: 0.95rem;
+  padding: 0.55rem;
+  box-shadow: var(--shadow);
+}
+
+.rehab-case-study-diagram img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 0.65rem;
+}
+
+/* Movie Recommendation System case study layout */
+.movie-case-study {
+  display: grid;
+  gap: 1rem;
+}
+
+.movie-case-study-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.85fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.movie-case-study-hero__content {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.movie-case-study-hero__media {
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  background: color-mix(in srgb, var(--surface-muted) 70%, var(--surface));
+  border-radius: 0.95rem;
+  padding: 0.55rem;
+  box-shadow: var(--shadow);
+}
+
+.movie-case-study-hero__media img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  margin: 0 auto;
+  border-radius: 0.65rem;
+}
+
 .impact-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -738,6 +825,26 @@
 
   .humanoid-case-study-diagram img {
     max-height: 440px;
+  }
+
+  .rehab-case-study-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .rehab-case-study-hero__media img {
+    max-height: 240px;
+  }
+
+  .rehab-case-study-diagram img {
+    max-height: 440px;
+  }
+
+  .movie-case-study-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .movie-case-study-hero__media img {
+    max-height: 240px;
   }
 
   .project-compact-item {

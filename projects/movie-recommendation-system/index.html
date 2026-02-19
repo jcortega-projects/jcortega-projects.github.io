@@ -33,32 +33,98 @@
     </div>
   </header>
 
-  <main class="container section-block">
-    <h1>Movie Recommendation System</h1>
-    <p class="lead">An end-to-end recommendation platform focused on reliable ingestion, scalable serving, and metadata enrichment.</p>
-
-    <figure class="project-hero">
-      <img src="../../assets/images/projects/movie-recsys/project_overview.png" alt="Movie Recommendation System overview" />
-    </figure>
-
-    <section class="panel spaced">
-      <h2>Project Summary</h2>
-      <p>Built a real-time recommendation pipeline with Kafka ingestion and Dockerized deployment.</p>
-      <p>Recommendation engine used matrix factorization, plus automated metadata scraping and tracking for improved recommendation quality.</p>
+  <main class="container section-block movie-case-study">
+    <section class="panel movie-case-study-hero">
+      <div class="movie-case-study-hero__content">
+        <h1>Movie Recommendation System</h1>
+        <p class="eyebrow">ML &amp; Systems Engineer</p>
+        <p class="lead">Designed and implemented a production-grade recommendation platform for a streaming environment serving ~1M users across a ~20K movie catalog.</p>
+        <p>The system was built around real-time serving, event-driven telemetry, and operational controls that support continuous model improvement without service disruption. Instead of optimizing for offline scores alone, the architecture prioritizes deployment safety, a 600ms latency SLA, and cost-aware ranking behavior.</p>
+        <p>It supports recommendation generation at scale, model lifecycle governance, and experiment-driven iteration through integrated monitoring, alerting, and A/B routing workflows.</p>
+        <div class="stack-tags">
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">FastAPI</span>
+          <span class="stack-pill">Apache Kafka</span>
+          <span class="stack-pill">Docker</span>
+          <span class="stack-pill">GitHub Actions</span>
+          <span class="stack-pill">Model Registry</span>
+          <span class="stack-pill">A/B Testing</span>
+          <span class="stack-pill">Drift Detection</span>
+        </div>
+      </div>
+      <figure class="movie-case-study-hero__media">
+        <img src="../../assets/images/projects/movie-recommendation-system/project_overview.png" alt="Movie Recommendation System overview" />
+      </figure>
     </section>
 
     <section class="panel spaced">
-      <h2>Core Components</h2>
+      <h2>Problem</h2>
+      <p>A streaming platform needs scalable, reliable recommendation infrastructure that performs under real production constraints, not just high offline model accuracy. The challenge is to serve personalized recommendations at large scale with strict latency expectations while managing cold start, shifting behavior patterns, ranking cost, and safe deployment operations.</p>
       <ul class="compact-list">
-        <li>Streaming event ingestion with Kafka topics</li>
-        <li>Collaborative filtering via matrix factorization</li>
-        <li>Containerized services for reproducible deployment</li>
+        <li>Cold-start users require useful ranking before meaningful interaction history exists.</li>
+        <li>Ranking decisions must balance predicted relevance and license-cost awareness.</li>
+        <li>Model quality must be evaluated online under drift and deployment constraints, not in isolation.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Solution</h2>
+      <p>The platform was designed as an end-to-end MLOps system spanning ingestion, feature engineering, model training, deployment, monitoring, and experimentation. Kafka streams capture recommendation requests, watch events, ratings, and account creation events, while metadata APIs enrich user and movie context for ranking pipelines.</p>
+      <p>Multiple model candidates are trained and compared across quality and operational efficiency, then promoted through controlled release workflows. The inference service exposes a low-latency `/recommend/&lt;userid&gt;` endpoint returning up to 20 ranked movie IDs under a 600ms SLA, with telemetry integrated into monitoring and experiment loops for continuous iteration.</p>
+    </section>
+
+    <section class="panel spaced">
+      <h2>System Architecture</h2>
+      <ul class="compact-list">
+        <li><strong>Kafka ingestion:</strong> Event streams for recommendation requests, watch behavior, ratings, and account events feed training and monitoring systems.</li>
+        <li><strong>Metadata APIs:</strong> User and movie metadata enrichment services provide additional context for feature construction and ranking constraints.</li>
+        <li><strong>Training pipeline:</strong> Leakage-safe dataset preparation, feature generation, and multi-model training are orchestrated in modular jobs.</li>
+        <li><strong>Model registry:</strong> Candidate models are versioned and promoted with provenance metadata and rollback support.</li>
+        <li><strong>Inference service:</strong> Containerized API service serves ranked results in real time with request-level logging.</li>
+        <li><strong>Monitoring stack:</strong> Availability, drift signals, online accuracy proxies, and recommendation cost are tracked with alerting policies.</li>
+        <li><strong>CI/CD:</strong> Automated test, build, and deployment workflows enforce reliability and release consistency.</li>
+        <li><strong>Experiment routing:</strong> A/B traffic splitting controls rollout of new ranking strategies and cold-start policies.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Engineering Decisions</h2>
+      <ul class="compact-list">
+        <li>Selected model candidates using latency-aware and cost-aware tradeoffs instead of ranking quality alone.</li>
+        <li>Integrated cost-aware ranking logic so recommendation relevance and licensing constraints could be optimized jointly.</li>
+        <li>Separated offline evaluation from online validation to avoid over-trusting offline metrics for deployment decisions.</li>
+        <li>Handled cold start through user self-descriptions to bootstrap recommendations before sufficient interaction history.</li>
+        <li>Containerized inference services to standardize runtime environments and enable safer model switching.</li>
+        <li>Designed monitoring around operationally actionable signals, including drift, availability, and ranking-cost behavior.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Validation &amp; Iteration Strategy</h2>
+      <p>Model development followed a comparative workflow across at least two recommendation approaches, using leakage-safe offline evaluation to filter candidates before deployment. Online telemetry from recommendation requests, watch behavior, and cost signals was then used to guide ranking adjustments and retraining priorities.</p>
+      <p>A/B testing and traffic splitting were used to evaluate model changes, cold-start policies, and cost-aware ranking tradeoffs under production conditions. Iteration decisions were driven primarily by production feedback because live user behavior and system constraints provide the most reliable signal for long-term platform quality.</p>
+    </section>
+
+    <section class="panel spaced">
+      <h2>My Role</h2>
+      <ul class="compact-list">
+        <li>Owned end-to-end system design from ingestion architecture through online serving and monitoring.</li>
+        <li>Built and compared multiple recommendation models with deployment-focused tradeoff analysis.</li>
+        <li>Implemented data infrastructure for event streaming, enrichment, schema validation, and drift monitoring.</li>
+        <li>Set up CI/CD pipelines, containerized inference, and zero-downtime model release patterns.</li>
+        <li>Implemented monitoring, alerting, and provenance tracking across model, pipeline, and dataset versions.</li>
+        <li>Designed and operated A/B experimentation workflows for production ranking iteration.</li>
+        <li>Led fairness, safety, security, and feedback-loop risk analysis for deployment readiness.</li>
       </ul>
     </section>
 
     <div class="button-row">
-      <a class="button button-primary" href="code.html">View Code Page</a>
+      <a class="button button-primary" href="code.html">View Code</a>
       <a class="button" href="../../projects.html">Back to Projects</a>
+      <!-- TODO: add real link -->
+      <a class="button" href="#" target="_blank" rel="noreferrer">GitHub</a>
+      <!-- TODO: add real link -->
+      <a class="button" href="#" target="_blank" rel="noreferrer">Demo</a>
     </div>
   </main>
 

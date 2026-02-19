@@ -33,32 +33,110 @@
     </div>
   </header>
 
-  <main class="container section-block">
-    <h1>Rehabilitation AI Partner</h1>
-    <p class="lead">A human-centered RL research project for improving physical therapy adherence with personalized interventions.</p>
-
-    <figure class="project-hero">
-      <img src="../../assets/images/projects/rehab-ai-partner/project_overview.png" alt="Rehabilitation AI Partner overview" />
-    </figure>
-
-    <section class="panel spaced">
-      <h2>Project Summary</h2>
-      <p>Architecting an RL-driven "Rehab Partner" integrating Ecological Momentary Assessment (EMA) for state monitoring and Just-In-Time Adaptive Interventions (JITAI) for personalized behavioral feedback.</p>
-      <p>Primary objective: optimize exercise consistency and long-term physical therapy adherence.</p>
+  <main class="container section-block rehab-case-study">
+    <section class="panel rehab-case-study-hero">
+      <div class="rehab-case-study-hero__content">
+        <h1>Rehabilitation AI Partner</h1>
+        <p class="eyebrow">AI Systems Engineer</p>
+        <p class="lead">A production-oriented JITAI system for adaptive rehabilitation support across long recovery timelines.</p>
+        <p>The architecture combines longitudinal reinforcement learning with psychological-state detection to personalize intervention timing and intensity rather than relying on static reminders.</p>
+        <p>Design emphasis is placed on policy behavior over time, balancing adherence support with intervention burden in a system that can be trained safely before deployment.</p>
+        <div class="stack-tags">
+          <span class="stack-pill">Deep Reinforcement Learning</span>
+          <span class="stack-pill">PPO</span>
+          <span class="stack-pill">Transformer NLP</span>
+          <span class="stack-pill">Digital Twin</span>
+          <span class="stack-pill">JITAI</span>
+          <span class="stack-pill">Behavioral Modeling</span>
+        </div>
+      </div>
+      <figure class="rehab-case-study-hero__media">
+        <img src="../../assets/images/projects/rehabilitation-ai-partner/project_overview.png" alt="Rehabilitation AI Partner overview" />
+      </figure>
     </section>
 
     <section class="panel spaced">
-      <h2>Core Components</h2>
+      <h2>Problem</h2>
+      <p>Rehabilitation success depends on sustained daily adherence, but most intervention systems use fixed prompting strategies that ignore behavioral drift, psychological state, and delayed consequences of intervention decisions.</p>
       <ul class="compact-list">
-        <li>Behavior state estimation from EMA signals</li>
-        <li>Policy learning for intervention timing and type</li>
-        <li>Feedback personalization loop with adherence metrics</li>
+        <li>Static prompting patterns can create intervention fatigue and habituation over time.</li>
+        <li>Clinicians have limited visibility into psychological state between structured follow-ups.</li>
+        <li>Simple contextual bandits are weak at modeling long-horizon behavior and delayed effects.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Solution</h2>
+      <p>The system is designed as a Just-in-Time Adaptive Intervention engine powered by deep reinforcement learning. A transformer-based NLP classifier detects psychological state from user dialogue, and the output is fused with telemetry to build the decision state for policy selection.</p>
+      <p>A PPO policy agent then selects intervention intensity from a structured action space: Silence, Nudge, Micro-Intervention, or Active Dialogue. The decision process is framed as a full Markov Decision Process to capture delayed outcomes, with a synthetic User Simulator used for offline policy training prior to real deployment.</p>
+    </section>
+
+    <section class="panel spaced">
+      <h2>System Architecture</h2>
+      <figure class="rehab-case-study-diagram">
+        <img src="../../assets/images/projects/rehabilitation-ai-partner/project_diagram.png" alt="Rehabilitation AI Partner system architecture diagram" />
+      </figure>
+      <p class="project-caption">User Dialogue + Telemetry -> NLP Classifier (Psychological State Detection) -> State Vector Construction -> PPO Policy Network -> Action Selection (Silence / Nudge / Micro-Intervention / Dialogue) -> Intervention Delivery -> Reward Signal -> Policy Update (Offline in Simulator).</p>
+      <ul class="compact-list">
+        <li><strong>Perception layer:</strong> Transformer NLP models infer Change Talk, Sustain Talk, and Neutral intent signals.</li>
+        <li><strong>State representation layer:</strong> Psychological state, pain signals, step counts, and recent intervention dosage are fused into policy state.</li>
+        <li><strong>Policy layer:</strong> PPO selects intervention actions under uncertainty and delayed feedback.</li>
+        <li><strong>Simulation and training layer:</strong> Digital Twin environment supports safe offline policy iteration.</li>
+        <li><strong>Intervention delivery layer:</strong> The chosen action is delivered as adaptive behavioral support.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Engineering Decisions</h2>
+      <ul class="compact-list">
+        <li>Moved from contextual bandits to full deep RL to model temporal dependencies and delayed behavioral consequences.</li>
+        <li>Selected PPO for stable policy optimization in stochastic user-behavior environments.</li>
+        <li>Integrated psychological modeling directly into the state vector to inform intervention timing and intensity.</li>
+        <li>Trained in a synthetic Digital Twin because online RL data collection is sample-inefficient and operationally risky.</li>
+        <li>Included random and static clinical heuristic baselines to contextualize policy behavior during evaluation.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Validation &amp; Iteration Strategy</h2>
+      <p>Validation is executed offline in the synthetic environment through scenario-driven policy replay and controlled baseline comparison across random, heuristic, and PPO agents.</p>
+      <ul class="compact-list">
+        <li>Ablation runs remove burden-penalty terms to inspect intervention overuse and behavioral drift patterns.</li>
+        <li>Stress tests target delayed reward dynamics to verify whether policy behavior remains stable over long horizons.</li>
+        <li>Iteration reviews focus on adherence, psychological reinforcement patterns, and intervention fatigue behavior without relying on fabricated KPI reporting.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Design Constraints</h2>
+      <ul class="compact-list">
+        <li>Deep RL remains sample-inefficient and requires careful simulation design before field use.</li>
+        <li>Distribution shift risk exists between synthetic user behavior and real patient behavior.</li>
+        <li>Policy quality depends heavily on Digital Twin fidelity and realistic behavioral assumptions.</li>
+        <li>Final deployment requires structured human-in-the-loop validation with clinicians.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>My Role</h2>
+      <ul class="compact-list">
+        <li>Designed the full JITAI architecture from signal ingestion through intervention policy selection.</li>
+        <li>Defined the reinforcement learning state space and intervention action space.</li>
+        <li>Implemented the PPO-based policy agent.</li>
+        <li>Designed the Digital Twin simulation environment for offline policy training.</li>
+        <li>Integrated transformer-based NLP classification for psychological state inference.</li>
+        <li>Structured the reward function to balance adherence support against intervention fatigue.</li>
+        <li>Designed baseline agents and ablation workflows for comparative policy evaluation.</li>
       </ul>
     </section>
 
     <div class="button-row">
-      <a class="button button-primary" href="code.html">View Code Page</a>
+      <a class="button button-primary" href="code.html">View Code</a>
       <a class="button" href="../../projects.html">Back to Projects</a>
+      <!-- TODO: add real link -->
+      <a class="button" href="#" target="_blank" rel="noreferrer">GitHub</a>
+      <!-- TODO: add real link -->
+      <a class="button" href="#" target="_blank" rel="noreferrer">Demo</a>
     </div>
   </main>
 
