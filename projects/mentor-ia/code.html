@@ -33,36 +33,131 @@
   </header>
 
   <main class="container section-block">
-    <h1>Mentor IA: Code Snippets</h1>
-    <p class="lead">Illustrative backend snippet for recommendation-driven mentor response planning.</p>
+    <h1>Mentor IA: Code Walkthrough</h1>
+    <p class="lead">Template walkthrough of repository organization, API design, retrieval flow, and deployment practices.</p>
 
-    <section class="code-panel">
+    <section class="panel spaced">
+      <h2>Repository Layout</h2>
+      <section class="code-panel">
+<pre><code>mentor-ia/
+├── api/
+│   ├── routes/
+│   │   ├── mentor.py
+│   │   └── health.py
+│   ├── services/
+│   │   ├── retrieval.py
+│   │   ├── orchestration.py
+│   │   └── evaluation.py
+│   └── main.py
+├── frontend/
+│   ├── src/
+│   └── public/
+├── infra/
+│   ├── docker/
+│   └── ci/
+└── docs/
+    └── architecture.md</code></pre>
+      </section>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Key Modules</h2>
+      <div class="table-wrap">
+        <table class="detail-table">
+          <thead>
+            <tr>
+              <th>Module</th>
+              <th>Responsibility</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>api/routes/mentor.py</code></td>
+              <td>Public mentoring endpoints</td>
+              <td>Validates input, applies policy checks, returns structured guidance</td>
+            </tr>
+            <tr>
+              <td><code>services/retrieval.py</code></td>
+              <td>Context retrieval</td>
+              <td>Fetches relevant course and user context for grounding</td>
+            </tr>
+            <tr>
+              <td><code>services/orchestration.py</code></td>
+              <td>Prompt + LLM orchestration</td>
+              <td>Composes system prompt, user state, and constraints</td>
+            </tr>
+            <tr>
+              <td><code>services/evaluation.py</code></td>
+              <td>Quality and latency checks</td>
+              <td>Captures rubric metrics and fallback events</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel spaced">
+      <h2>API Example (FastAPI)</h2>
+      <section class="code-panel">
 <pre><code><span class="code-keyword">from</span> fastapi <span class="code-keyword">import</span> APIRouter
 <span class="code-keyword">from</span> pydantic <span class="code-keyword">import</span> BaseModel
 
-router = APIRouter()
+router = APIRouter(prefix=<span class="code-string">"/mentor"</span>, tags=[<span class="code-string">"mentor"</span>])
 
 <span class="code-keyword">class</span> <span class="code-func">MentorRequest</span>(BaseModel):
-    learner_goal: str
-    recent_activity: list[str]
+    learner_id: str
+    goal: str
+    topic: str
 
-<span class="code-keyword">def</span> <span class="code-func">build_prompt</span>(payload: MentorRequest) -&gt; str:
-    history = ", ".join(payload.recent_activity[-3:])
-    <span class="code-keyword">return</span> (
-        <span class="code-string">f"Goal: {payload.learner_goal}\n"</span>
-        <span class="code-string">f"Recent activity: {history}\n"</span>
-        <span class="code-string">"Return a concise next-step mentoring plan."</span>
-    )
-
-<span class="code-keyword">@router</span>.post(<span class="code-string">"/mentor/next-step"</span>)
+<span class="code-keyword">@router</span>.post(<span class="code-string">"/next-step"</span>)
 <span class="code-keyword">def</span> <span class="code-func">next_step</span>(payload: MentorRequest):
-    prompt = build_prompt(payload)
-    <span class="code-keyword">return</span> {"prompt": prompt, "status": "ready"}</code></pre>
+    recommendation = {
+        <span class="code-string">"next_action"</span>: <span class="code-string">"Review week-3 exercises"</span>,
+        <span class="code-string">"confidence"</span>: 0.86,
+        <span class="code-string">"reasoning_trace_id"</span>: <span class="code-string">"trace_1029"</span>,
+    }
+    <span class="code-keyword">return</span> recommendation</code></pre>
+      </section>
+    </section>
+
+    <section class="panel spaced">
+      <h2>RAG / Retrieval Flow</h2>
+      <section class="code-panel">
+<pre><code><span class="code-keyword">def</span> <span class="code-func">mentor_response</span>(query, learner_state):
+    context = retrieve_top_k(query, learner_state.course_id, k=5)
+    prompt = build_prompt(query=query, state=learner_state, context=context)
+    answer = llm_generate(prompt, temperature=0.2)
+    scored = evaluate_answer(answer, rubric=<span class="code-string">"mentoring_v1"</span>)
+
+    <span class="code-keyword">if</span> scored.quality &lt; 0.7:
+        <span class="code-keyword">return</span> fallback_template(query, context)
+    <span class="code-keyword">return</span> answer</code></pre>
+      </section>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Deployment Notes</h2>
+      <ul class="compact-list">
+        <li>API and worker services are containerized and deployed by environment (`dev`, `staging`, `prod`).</li>
+        <li>CI pipeline runs lint + tests + build before deployment promotion.</li>
+        <li>Runtime metrics include p95 latency, error rate, and retrieval hit quality.</li>
+      </ul>
+      <section class="code-panel spaced">
+<pre><code><span class="code-keyword">name</span>: mentor-ia-ci
+
+<span class="code-keyword">steps</span>:
+  - run: pytest
+  - run: docker build -t mentor-ia-api:${GIT_SHA} .
+  - run: docker push registry/mentor-ia-api:${GIT_SHA}
+  - run: deploy --env=staging --image=registry/mentor-ia-api:${GIT_SHA}</code></pre>
+      </section>
     </section>
 
     <div class="button-row">
       <a class="button button-primary" href="index.html">Back to Description</a>
       <a class="button" href="../../projects.html">All Projects</a>
+      <a class="button" href="#" target="_blank" rel="noreferrer">GitHub</a>
     </div>
   </main>
 

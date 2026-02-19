@@ -32,31 +32,89 @@
     </div>
   </header>
 
-  <main class="container section-block">
-    <h1>Mentor IA</h1>
-    <p class="lead">Founder-led AI mentoring platform focused on production reliability, deployment speed, and measurable learner outcomes.</p>
-
-    <figure class="project-hero">
-      <img src="../../assets/images/projects/mentor-ia/project_overview.png" alt="Mentor IA overview" />
-    </figure>
-
-    <section class="panel spaced">
-      <h2>Project Summary</h2>
-      <p>Mentor IA is being built as a real system, not just a prototype: clear user flows, deployable services, and instrumentation for outcomes tracking.</p>
-      <p>This placeholder page will be expanded into a full case study with architecture, metrics, and implementation details.</p>
+  <main class="container section-block mentor-case-study">
+    <section class="panel mentor-case-study-hero">
+      <div class="mentor-case-study-hero__content">
+        <h1>Mentor IA</h1>
+        <p class="eyebrow">Founder &amp; Lead Engineer</p>
+        <p class="lead">An AI mentoring system focused on dependable system design, not one-off model demos.</p>
+        <p>The project is structured as a production-oriented case study: clear API boundaries, retrieval-backed responses, and operational feedback loops for continuous improvement.</p>
+        <p>Instead of a feature-first narrative, the implementation prioritizes architecture choices that support reliability, maintainability, and future scale.</p>
+        <div class="stack-tags">
+          <span class="stack-pill">FastAPI</span>
+          <span class="stack-pill">MongoDB</span>
+          <span class="stack-pill">RAG</span>
+          <span class="stack-pill">TypeScript</span>
+        </div>
+      </div>
+      <figure class="mentor-case-study-hero__media">
+        <img src="../../assets/images/projects/mentor-ia/project_overview.png" alt="Mentor IA project overview" />
+      </figure>
     </section>
 
     <section class="panel spaced">
-      <h2>Core Components</h2>
+      <h2>Problem</h2>
+      <p>Students often receive inconsistent guidance across fragmented channels, which makes it hard to maintain momentum and confidence during demanding coursework.</p>
       <ul class="compact-list">
-        <li>LLM-powered mentoring workflow orchestration</li>
-        <li>Production deployment and monitoring foundations</li>
-        <li>User analytics pipeline for impact measurement</li>
+        <li>Support quality varies significantly between sessions and mentors.</li>
+        <li>There is limited continuity between previous context and next recommendations.</li>
+        <li>Teams need a system that is explainable and operationally manageable.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Solution</h2>
+      <p>Mentor IA delivers contextual guidance through a backend that combines retrieval, orchestration, and response policies. The core design separates interaction logic from model logic so each layer can evolve independently.</p>
+      <p>The result is a system-focused implementation where user state, knowledge retrieval, and response generation are coordinated through explicit service boundaries and versioned prompts.</p>
+    </section>
+
+    <section class="panel spaced">
+      <h2>System Architecture</h2>
+      <figure class="mentor-case-study-diagram">
+        <img src="../../assets/images/projects/mentor-ia/project_diagram.png" alt="Mentor IA system architecture diagram" />
+      </figure>
+      <p class="project-caption">Data flow: client request → API orchestration layer → retrieval/context assembly → LLM response generation → persistence and telemetry logging.</p>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Engineering Decisions</h2>
+      <ul class="compact-list">
+        <li>FastAPI for explicit contracts, modular routing, and predictable service behavior.</li>
+        <li>MongoDB for flexible learner-state documents and iteration-friendly schema updates.</li>
+        <li>Retrieval-augmented generation to ground answers in curated academic context.</li>
+        <li>Prompt and policy versioning to make behavior changes auditable and reversible.</li>
+        <li>Container-first deployment strategy to keep environments consistent from dev to staging.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Validation &amp; Iteration Strategy</h2>
+      <p>Validation currently relies on structured qualitative review and controlled test scenarios rather than production KPI reporting. Each iteration focuses on response usefulness, retrieval relevance, and failure-mode handling.</p>
+      <p>As the system matures, evaluation will track response quality trends, retrieval precision, user progression signals, and operational stability indicators through a repeatable review cadence.</p>
+      <ul class="compact-list">
+        <li>Scenario-based QA for mentoring consistency and edge-case behavior.</li>
+        <li>Prompt comparison workflow before promotion to shared environments.</li>
+        <li>Design constraints documented per release to guide safe scope expansion.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>My Role</h2>
+      <ul class="compact-list">
+        <li>Defined the architecture boundaries and tradeoffs between speed, quality, and maintainability.</li>
+        <li>Implemented backend services, retrieval orchestration, and persistence workflows.</li>
+        <li>Led user discovery interviews and translated findings into roadmap priorities.</li>
+        <li>Set up iteration loops for prompt updates, system behavior checks, and release planning.</li>
       </ul>
     </section>
 
     <div class="button-row">
+      <a class="button button-primary" href="code.html">View Code</a>
       <a class="button" href="../../projects.html">Back to Projects</a>
+      <!-- TODO: add real link -->
+      <a class="button" href="#" target="_blank" rel="noreferrer">GitHub</a>
+      <!-- TODO: add real link -->
+      <a class="button" href="#" target="_blank" rel="noreferrer">Demo</a>
     </div>
   </main>
 
