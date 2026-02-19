@@ -32,32 +32,101 @@
     </div>
   </header>
 
-  <main class="container section-block">
-    <h1>Humanoid Robot Navigation Controllers</h1>
-    <p class="lead">Undergraduate thesis comparing PID and Lyapunov-based controllers on RRT-planned trajectories.</p>
-
-    <figure class="project-hero">
-      <img src="../../assets/images/projects/humanoid-navigation/project_overview.png" alt="Humanoid Robot Navigation Controllers overview" />
-    </figure>
-
-    <section class="panel spaced">
-      <h2>Project Summary</h2>
-      <p>Designed and simulated controllers for humanoid navigation over RRT-generated paths.</p>
-      <p>Benchmarked controller families for stability, precision, and path-tracking efficiency in simulation.</p>
+  <main class="container section-block humanoid-case-study">
+    <section class="panel humanoid-case-study-hero">
+      <div class="humanoid-case-study-hero__content">
+        <h1>Humanoid Robot Navigation Controllers</h1>
+        <p class="eyebrow">Robotics Systems Engineer</p>
+        <p class="lead">A simulation-first robotics pipeline for robust humanoid navigation before hardware deployment.</p>
+        <p>This case study focuses on system design: RRT planning, interchangeable control modules, and safe comparative testing in CoppeliaSim.</p>
+        <p>The objective was to validate controller behavior under identical scenarios while preserving stability, path-following behavior, and collision-aware navigation.</p>
+        <div class="stack-tags">
+          <span class="stack-pill">NAO Robot</span>
+          <span class="stack-pill">CoppeliaSim</span>
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">RRT</span>
+          <span class="stack-pill">PID Control</span>
+          <span class="stack-pill">Lyapunov Control</span>
+          <span class="stack-pill">Qt GUI</span>
+        </div>
+      </div>
+      <figure class="humanoid-case-study-hero__media">
+        <img src="../../assets/images/projects/humanoid-robot-navigation/project_overview.png" alt="Humanoid robot navigation overview" />
+      </figure>
     </section>
 
     <section class="panel spaced">
-      <h2>Core Components</h2>
+      <h2>Problem</h2>
+      <p>Humanoid robots must navigate complex indoor spaces where locomotion stability, collision avoidance, and path tracking all interact under uncertainty. Direct hardware experimentation is costly and risky, so controller behavior must be validated safely before real-world deployment.</p>
       <ul class="compact-list">
-        <li>Trajectory generation from RRT planning</li>
-        <li>PID and Lyapunov control implementation</li>
-        <li>Comparative evaluation under identical scenarios</li>
+        <li>Indoor environments include obstacles and constrained paths that stress navigation behavior.</li>
+        <li>Controller stability during locomotion is difficult to tune without controlled testing loops.</li>
+        <li>Teams need repeatable scenario execution to compare alternatives fairly.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Solution</h2>
+      <p>The project implemented a simulation-based robotics development pipeline in which RRT generated feasible paths and controller modules executed trajectory tracking on a NAO model in CoppeliaSim.</p>
+      <p>Two controllers were built and evaluated under identical scenarios: a classical PID controller and a Lyapunov-based nonlinear controller. This architecture made planning, control, and evaluation layers independently testable while preserving end-to-end integration fidelity.</p>
+    </section>
+
+    <section class="panel spaced">
+      <h2>System Architecture</h2>
+      <figure class="humanoid-case-study-diagram">
+        <img src="../../assets/images/projects/humanoid-robot-navigation/project_diagram.png" alt="Humanoid navigation system architecture diagram" />
+      </figure>
+      <p class="project-caption">Environment (CoppeliaSim) -> RRT Path Planner -> Controller (PID or Lyapunov) -> NAO Robot Kinematics -> State Feedback -> Error Computation -> Monitoring GUI.</p>
+      <ul class="compact-list">
+        <li><strong>Planning layer:</strong> Generates collision-aware paths from environment constraints.</li>
+        <li><strong>Control layer:</strong> Executes interchangeable tracking controllers over the planned trajectory.</li>
+        <li><strong>Simulation layer:</strong> Provides safe, repeatable robotics experimentation in CoppeliaSim.</li>
+        <li><strong>Visualization layer:</strong> Qt-based interface for monitoring and experiment setup.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Engineering Decisions</h2>
+      <ul class="compact-list">
+        <li>Simulation-first workflow enabled safer iteration and lower experimentation cost.</li>
+        <li>RRT was chosen for exploration-based path generation in obstacle-rich spaces.</li>
+        <li>PID and Lyapunov controllers were compared to evaluate linear and nonlinear stability approaches.</li>
+        <li>A Qt GUI enabled human-in-the-loop scenario control and real-time behavior monitoring.</li>
+        <li>Planner and controller were separated by design so modules could be swapped without rewriting the full pipeline.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>Validation &amp; Iteration Strategy</h2>
+      <p>Validation relied on scenario-based simulation runs with varying obstacle layouts and disturbances. Each run used the same setup conditions to preserve a fair controller comparison and isolate behavioral differences.</p>
+      <ul class="compact-list">
+        <li>Repeated scenario execution in obstacle-rich environments.</li>
+        <li>Error-based controller comparison with focus on tracking behavior.</li>
+        <li>Qualitative observation of oscillation and convergence behavior across runs.</li>
+        <li>Iteration loops driven by stability observations and failure-case replay.</li>
+      </ul>
+    </section>
+
+    <section class="panel spaced">
+      <h2>My Role</h2>
+      <ul class="compact-list">
+        <li>Designed the full robotics simulation pipeline from planning through control evaluation.</li>
+        <li>Implemented the RRT path planner in Python.</li>
+        <li>Developed the PID controller module.</li>
+        <li>Developed the Lyapunov-based nonlinear controller module.</li>
+        <li>Integrated controllers with the NAO model in CoppeliaSim.</li>
+        <li>Built a Qt GUI for monitoring and experiment configuration.</li>
+        <li>Designed the comparative evaluation methodology across shared scenarios.</li>
       </ul>
     </section>
 
     <div class="button-row">
-      <a class="button button-primary" href="code.html">View Code Page</a>
+      <a class="button button-primary" href="code.html">View Code</a>
       <a class="button" href="../../projects.html">Back to Projects</a>
+      <!-- TODO: add real link -->
+      <a class="button" href="#" target="_blank" rel="noreferrer">GitHub</a>
+      <!-- TODO: add real link -->
+      <a class="button" href="#" target="_blank" rel="noreferrer">Demo</a>
     </div>
   </main>
 
