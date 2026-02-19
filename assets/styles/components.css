@@ -317,13 +317,90 @@
   margin-top: 0;
 }
 
-.project-list-grid .project-copy {
+/* Home project highlights compact list */
+.project-compact-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.project-compact-item {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 0.65rem 0.8rem;
+}
+
+.project-compact-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 0.7rem;
+  object-fit: cover;
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+
+.project-compact-meta {
+  min-width: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.project-compact-meta h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.project-compact-summary {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.35;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: calc(1.55em * 3);
+}
+
+.project-compact-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.icon-action-button {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  line-height: 0;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.icon-action-button svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.icon-action-button .nav-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  object-fit: contain;
+  display: block;
+}
+
+.icon-action-button:hover,
+.icon-action-button:focus-visible {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
 }
 
 .project-hero {
@@ -628,6 +705,20 @@
 
   .humanoid-case-study-diagram img {
     max-height: 440px;
+  }
+
+  .project-compact-item {
+    grid-template-columns: 50px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .project-compact-actions {
+    grid-column: 2;
+    margin-top: 0.15rem;
+  }
+
+  .project-compact-summary {
+    -webkit-line-clamp: 2;
   }
 }
 

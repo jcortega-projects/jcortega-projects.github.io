@@ -34,55 +34,74 @@
 
   <main class="container section-block">
     <h1>Projects</h1>
-    <p class="lead">Four focused projects from my resume, each with a short summary page and code walkthrough.</p>
-
-    <div class="card-grid project-list-grid">
-      <article class="card project-card">
-        <div class="project-card__body">
-          <h2>Mentor IA (Founder-Led Product)</h2>
-          <img class="project-card__image" src="assets/images/projects/mentor-ia/project_overview.png" alt="Mentor IA overview" />
-          <p class="project-copy">Founder-led AI mentoring platform that combines retrieval-backed guidance, structured planning, and progress tracking for students. Built with deployment-ready APIs and measurable evaluation loops for continuous product iteration.</p>
+    <div class="card-grid project-grid">
+      <article class="card project-card project-card-featured">
+        <h3>Mentor IA</h3>
+        <img class="project-card__image" src="assets/images/projects/mentor-ia/project_overview.png" alt="Mentor IA overview" />
+        <p class="project-copy"><strong>Problem:</strong> Students need consistent, personalized academic support outside fixed mentoring hours.</p>
+        <p class="project-copy"><strong>Solution:</strong> Built a founder-led AI mentoring MVP focused on planning, course-aware feedback, and continuous iteration.</p>
+        <p class="project-copy"><strong>System:</strong> Full-stack architecture with Python/FastAPI services, MongoDB persistence, and a TypeScript/HTML/CSS frontend.</p>
+        <p class="project-copy"><strong>Impact:</strong> Established a deployable product foundation with a repeatable feedback loop for user-driven improvements.</p>
+        <div class="stack-tags">
+          <span class="stack-label">Stack</span>
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">FastAPI</span>
+          <span class="stack-pill">MongoDB</span>
+          <span class="stack-pill">TypeScript</span>
+          <span class="stack-pill">HTML/CSS</span>
         </div>
-        <div class="button-row project-card__actions">
-          <a class="button button-primary" href="projects/mentor-ia/index.html">Description</a>
-          <a class="button" href="projects/mentor-ia/code.html">Code</a>
-        </div>
+        <a class="button button-primary" href="projects/mentor-ia/index.html">Open project</a>
       </article>
 
       <article class="card project-card">
-        <div class="project-card__body">
-          <h2>Rehabilitation AI Partner (Research)</h2>
-          <img class="project-card__image" src="assets/images/projects/rehab-ai-partner/project_overview.png" alt="Rehabilitation AI Partner overview" />
-          <p class="project-copy">Architecting an RL-driven rehab partner integrating EMA for state monitoring and JITAI for personalized behavioral feedback.</p>
+        <h3>Rehabilitation AI Partner</h3>
+        <img class="project-card__image" src="assets/images/projects/rehabilitation-ai-partner/project_overview.png" alt="Rehabilitation AI Partner overview" />
+        <p class="project-copy"><strong>Problem:</strong> Rehab programs struggle with adherence when support is not personalized in real time.</p>
+        <p class="project-copy"><strong>Solution:</strong> Built an RL-driven intervention system combining EMA signals with JITAI policy selection.</p>
+        <p class="project-copy"><strong>System:</strong> Decision pipeline integrating patient-state signals, policy logic, and intervention delivery pathways.</p>
+        <p class="project-copy"><strong>Impact:</strong> Created a production-oriented framework for adaptive support and longitudinal adherence evaluation.</p>
+        <div class="stack-tags">
+          <span class="stack-label">Stack</span>
+          <span class="stack-pill">RL</span>
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">Behavioral Modeling</span>
+          <span class="stack-pill">EMA/JITAI</span>
         </div>
-        <div class="button-row project-card__actions">
-          <a class="button button-primary" href="projects/rehabilitation-ai-partner/index.html">Description</a>
-          <a class="button" href="projects/rehabilitation-ai-partner/code.html">Code</a>
-        </div>
+        <a class="button button-primary" href="projects/rehabilitation-ai-partner/index.html">Open project</a>
       </article>
 
       <article class="card project-card">
-        <div class="project-card__body">
-          <h2>Movie Recommendation System (ML in Production)</h2>
-          <img class="project-card__image" src="assets/images/projects/movie-recsys/project_overview.png" alt="Movie Recommendation System overview" />
-          <p class="project-copy">Real-time ingestion via Kafka, Docker-based deployment, and matrix factorization with metadata enrichment.</p>
+        <h3>Movie Recommendation System</h3>
+        <img class="project-card__image" src="assets/images/projects/movie-recommendation-system/project_overview.png" alt="Movie Recommendation System overview" />
+        <p class="project-copy"><strong>Problem:</strong> Recommendation quality and latency degrade without reliable ingestion and evaluation loops.</p>
+        <p class="project-copy"><strong>Solution:</strong> Designed a production pipeline with Kafka streaming, matrix factorization, and containerized serving.</p>
+        <p class="project-copy"><strong>System:</strong> Event ingestion, model scoring, and metadata enrichment services orchestrated in a Dockerized architecture.</p>
+        <p class="project-copy"><strong>Impact:</strong> Improved delivery readiness for real-time recommendations with clearer observability and iteration points.</p>
+        <div class="stack-tags">
+          <span class="stack-label">Stack</span>
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">Kafka</span>
+          <span class="stack-pill">Docker</span>
+          <span class="stack-pill">Matrix Factorization</span>
         </div>
-        <div class="button-row project-card__actions">
-          <a class="button button-primary" href="projects/movie-recommendation-system/index.html">Description</a>
-          <a class="button" href="projects/movie-recommendation-system/code.html">Code</a>
-        </div>
+        <a class="button button-primary" href="projects/movie-recommendation-system/index.html">Open project</a>
       </article>
 
       <article class="card project-card">
-        <div class="project-card__body">
-          <h2>Humanoid Robot Navigation Controllers (Undergrad Thesis)</h2>
-          <img class="project-card__image" src="assets/images/projects/humanoid-navigation/project_overview.png" alt="Humanoid Robot Navigation Controllers overview" />
-          <p class="project-copy">Designed and simulated PID and Lyapunov-based controllers on RRT-generated paths; benchmarked stability and tracking precision.</p>
+        <h3>Humanoid Robot Navigation Controllers</h3>
+        <img class="project-card__image" src="assets/images/projects/humanoid-robot-navigation/project_overview.png" alt="Humanoid Robot Navigation Controllers overview" />
+        <p class="project-copy"><strong>Problem:</strong> Humanoid navigation requires stable path tracking under model and control uncertainty.</p>
+        <p class="project-copy"><strong>Solution:</strong> Implemented and benchmarked PID and Lyapunov controllers on RRT-generated trajectories.</p>
+        <p class="project-copy"><strong>System:</strong> Simulation workflow coupling path generation, controller execution, and comparative performance analysis.</p>
+        <p class="project-copy"><strong>Impact:</strong> Produced actionable stability and precision benchmarks to guide controller selection in practice.</p>
+        <div class="stack-tags">
+          <span class="stack-label">Stack</span>
+          <span class="stack-pill">Control Systems</span>
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">Simulation</span>
+          <span class="stack-pill">Robotics</span>
         </div>
-        <div class="button-row project-card__actions">
-          <a class="button button-primary" href="projects/humanoid-robot-navigation-controllers/index.html">Description</a>
-          <a class="button" href="projects/humanoid-robot-navigation-controllers/code.html">Code</a>
-        </div>
+        <a class="button button-primary" href="projects/humanoid-robot-navigation-controllers/index.html">Open project</a>
       </article>
     </div>
   </main>
