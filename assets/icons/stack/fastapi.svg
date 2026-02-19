@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="fastapi-title">
+  <title id="fastapi-title">FastAPI</title>
+  <g fill="none" stroke="#4b5563" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5">
+    <path d="M32 8 50 18v28L32 56 14 46V18z"/>
+    <path d="m37 16-14 17h9l-5 15 14-18h-9z"/>
+  </g>
+</svg>
